@@ -19,11 +19,11 @@ function getData() {
 function loadData(i) {
     if (i < arr.length) {
         content_container[i].innerHTML = `
+        <div class="text__container"> 
             <div class="content">Date joined <br> ${new Date(arr[i].data).toLocaleDateString()}</div>
             <div class="content">Job title <br> ${arr[i].job_title}</div>
             <div class="content">Level <br> ${arr[i].level}</div>
 
-            <img src="image.png" alt="" class="">
 
             <div class="content">Address <br> ${arr[i].address}</div>
             <div class="content">Phone <br> ${arr[i].phone}</div>
@@ -32,6 +32,10 @@ function loadData(i) {
             <div class="content">Skills <br>${arr[i].skills}</div>
             <div class="content">Languages <br>${arr[i].language}</div>
             <div class="content">Experience <br> ${arr[i].experience}</div>
+        </div>
+        <div class="img__container">
+            <img src="image.png" alt="" class="">
+        </div>
             
         `;
     } else {
