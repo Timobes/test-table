@@ -5,25 +5,26 @@ const content = document.getElementsByClassName('content')
 
 let arr = []
 
+const mainApi = 'http://localhost:8080/api'
+const fakeApi = 'http://localhost:8080/not-db'
+
 function getData() {
-    fetch('http://localhost:8080/api')
+    fetch(fakeApi)
         .then((res) => res.json())
         .then((data) => {
             arr.push(...data.message)
-            console.log(arr[0].level)
+            console.log(data)
         })
         .catch((error) => console.error('Ошибка:', error)); 
 }
 
 
 function loadData(i) {
-    if (i < arr.length) {
         content_container[i].innerHTML = `
         <div class="text__container"> 
             <div class="content">Date joined <br> ${new Date(arr[i].data).toLocaleDateString()}</div>
             <div class="content">Job title <br> ${arr[i].job_title}</div>
             <div class="content">Level <br> ${arr[i].level}</div>
-
 
             <div class="content">Address <br> ${arr[i].address}</div>
             <div class="content">Phone <br> ${arr[i].phone}</div>
@@ -38,9 +39,6 @@ function loadData(i) {
         </div>
             
         `;
-    } else {
-        console.error('Индекс выходит за пределы массива arr');
-    }
 }
  
 document.addEventListener('DOMContentLoaded', getData); 
